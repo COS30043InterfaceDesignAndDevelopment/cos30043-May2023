@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>v-bind v-on computed</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <!-- VUE -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"> </script>
+  
+	<style rel="stylesheet">
+		.fade1-enter-active, .fade1-leave-active {
+		  transition: opacity 1s;
+		}
+		.fade1-enter, .fade1-leave-to /* .fade-leave-active below version 2.1.8 */ {
+		  opacity: 0;
+		}
+	</style>
+
+
+</head>
+
+<body>
+
+	<h1>v-bind v-on computed</h1>
+	<div id="app">
+		<!-- ---------------  v-bind -->
+ 		<p v-bind:text-content.prop="textmsg"> </p>
+		
+		<img v-bind:src="imageSrc">
+
+		<!-- ---------------  v-on -->		
+		<p><button v-on:click="show = !show">   Toggle  </button></p>
+
+		<!-- ---------------  transition wrapper -->		
+		<transition name="fade1">
+			<h2 v-if="show">hello vue</h2>
+		</transition>
+
+		<!-- ---------------  filters -->
+		<div>
+			  <p>Enter a string:<input type ="text" v-model="inputStr"></p>
+        <!-- inputStr is passed as input into the filter named "formatStr" -->
+			  <p>Format as upper case + lower case: {{ formatStr }} </p>
+		</div>
+		
+		<!-- ---------------  computed -->
+		<p>Original message: <input v-model="msg"></p>
+		<!-- <p>Computed reversed message: "{{ reversedMessage }}"</p> -->
+		
+    <!-- ALTERNATIVE: using method -->
+    <p>Computed reversed message: "{{ reversedMessage2(msg) }}"</p>
+		
+	</div>
+
+	<script>
+
+		//assigning variables
+		var textmsg="some text";
+		var imageSrc="images/flower.jpg";
+ 		var show=false;
+		var inputStr="";
+		var msg="";	 
+		
+		//creating new Vue instance
+		// use this to access Vue object globally, e.g. via console.log
+    // vue = new Vue({...})
+    Vue.createApp({
+			data()  {
+        return {textmsg: "some text",imageSrc: "images/flower.jpg" ,show: false , inputStr: "hello" , msg: ""};
+      },//passing variables into vue app
+			
+			computed: {
+        formatStr: function(){
+				  return "\"" + this.inputStr.toUpperCase() + "\"  \""+ this.inputStr.toLowerCase() + "\"";
+				},
+				//lowercase: function(str){
+				//return str.toLowerCase();
+				//}        
+				// a computed getter
+				reversedMessage: function () {
+				  // `this` points to the vm instance
+				  return this.msg.split('').reverse().join('')
+				}
+        // ERROR: cannot take input argument here ==> need to define a method (see below)
+        // reversedMessage: function (str) {
+				//   // `this` points to the vm instance
+				//   return str.split('').reverse().join('')
+				// }
+			},
+      
+      // extra (added to show how to define arbitrary methods that take arguments)
+      methods: {
+        // same as reverseMessage above
+        reversedMessage2: function (str) {
+				  // `this` points to the vm instance
+				  return str.split('').reverse().join('')
+				}
+      }
+		}).mount('#app');
+	</script>
+</body>
+
+</html>

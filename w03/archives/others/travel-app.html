@@ -1,0 +1,51 @@
+<!-- this is a very simple example mainly focus on Vue data binding and directives. -->
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<title>Travel Information</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+  
+</head>
+<body>
+	<h1>Travel Information</h1>
+	<hr>
+	<div id="app">
+	
+		<p>Your Name:<input type="text"   v-model="nameVar" ></p>
+		<p>Your feeling in the morning:<input type="text"   v-model="morningVar" ></p>
+		<p>Your feeling in the evening:<input type="text"   v-model="eveningVar" ></p>
+		<p class="bg-info" v-if="(morningVar != eveningVar)">You feel differently during the day.</p>
+		<p class="bg-info" v-if="(morningVar == eveningVar)">You have the same feeling during the day. </p>
+
+		<p>Country:
+		<input type="radio" id="aus" value="Australia" v-model="countryVar" >
+		<label for = "aus">Australia</label>
+		<input type="radio" id="ca" value="Canada" v-model="countryVar" >
+		<label for = "ca">Canada</label>
+		</p>
+		
+		<p>City:
+		<select id="city" v-model="cityVar" >
+			<option v-for="c in filteredCity" v-bind:value="c.city">
+				{{c.city}}
+			</option>
+		</select>
+		</p>
+		
+		<hr>
+		<h2>Note:</h2>
+		<p>You Name:{{nameVar}}</p>
+		<p>You visited {{cityVar}}   in    {{countryVar}}. </p>
+	</div>
+	
+	<!-- <script src="js/vue.js"></script> -->
+	<script src="js/travel.js"></script>
+</body>
+</html>

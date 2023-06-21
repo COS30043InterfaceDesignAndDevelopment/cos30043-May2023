@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<title>Fetching: update</title> 
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <script src="https://unpkg.com/vue@3"></script>   
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.js"></script>
+</head> 
+<body> 
+	<div id="app">
+      	<app-readjson></app-readjson>   
+	</div>
+      
+	<script>  <!--   embedded this short js here. So you can see the js and html on the same page -->
+	const app = Vue.createApp({	})
+	const vuetify = Vuetify.createVuetify( )  
+
+	app.component('app-readjson', {
+		data: function(){
+        return  {err:'', msg:'', title: '', body: ''} 
+    }, 
+		template: `			
+    <v-app> 
+        <v-container>
+          <v-form name="myForm2" class="form-horizontal">
+            <v-text-field label="Title" v-model="title"> </v-text-field>
+            <v-text-field label="Message" v-model="body">  </v-text-field>
+            <v-btn v-on:click="updateData(title, body)" color="primary"> Update</v-btn>
+          </v-form>
+          <v-container>
+            <p>Message: {{msg}}</p>
+            <p v-show="err">Error (if any): {{err}}</p>
+          </v-container>
+        </v-container>
+			</v-app> 
+		`,
+	methods: {
+			updateData: function(title, body){
+				//your data to send
+				const myObject = {
+					"userId": 1,
+					"id": 1 ,
+					"title": title,
+					"body": body
+				};
+
+				fetch('https://jsonplaceholder.typicode.com/posts/1', {
+					method: 'PUT',
+					headers: {
+					  'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(myObject)
+				})
+				.then(response => {
+          if (!response.ok) {
+            this.err = "URL(" + response.url + ") => " + response.status;
+          } else {
+            return response.json()
+          }
+				})
+				.then(data => {
+					// this is the data we get after response.json
+					//console.log(data) 
+          this.msg = data
+				})
+				.catch(error => this.err = 'The error is: ' + error)	
+			}
+				
+}
+})
+app.use(vuetify).mount('#app')
+	</script>
+</body> 
+</html>

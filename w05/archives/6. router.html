@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Router</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+
+  <!-- VUE ROUTER -->
+  <!-- version 3.5.x: 2021 -->
+  <script src="https://unpkg.com/vue-router@3.5.4"> </script>
+  <!-- version 4: 2022: does not yet support this version -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue-router@4/dist/vue-router.js"> </script> -->
+
+</head>
+<body>
+	<h1>Router</h1> 
+	<div id="app">
+    <!-- construct router-view from some router-links -->
+		<nav>
+      <!-- <a href="/">Home</a> -->
+		  <router-link to="/">Home</router-link>
+		  <router-link to="/login"> | Login</router-link>
+		  <router-link to="/about"> | About</router-link>
+      <!-- external route -->
+		  <router-link to="/external"> | External</router-link>
+		</nav>
+
+		<router-view></router-view>
+	</div>
+
+	<script>
+  // the target components for each router link
+	const Home  = {  
+    template: '<div><h2>Home</h2><p>Home page content here.</p></div>' 
+  }
+	const Login = {  
+    template: '<div><h2>Login</h2><p>Login page content here.</p></div>' 	
+  }
+	const About = {  
+    template: '<div><h2>About</h2><p>A page content here.</p></div>'  
+  }
+
+  // VueRouter (router) instance
+	const router = new VueRouter({
+	  routes: [
+      // mapps route URLs to components
+		{ path: '/', component: Home },
+		{ path: '/login', component: Login },
+		{ path: '/about', component: About }, 
+    { path: '/external', 
+      beforeEnter(to, from, next) {
+        // redirects to an external URL
+        window.location.href="https://google.com"
+      }
+    }
+	  ]
+	})
+
+	new Vue({
+		el: "#app",
+		router    // add router instance to Vue
+	}) 
+	</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+
+  <!-- VUETIFY -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+
+  <title>Vuetify</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-app-bar app>
+        <p> this is an app bar</p>
+      </v-app-bar>
+
+      <!-- Sizes your content based upon application components -->
+      <v-main>
+        <!-- Provides the application the proper gutter -->
+        <v-container fluid>
+          <p>Hello World!</p>
+
+          <v-btn color="primary">
+            <v-icon>mdi-pencil</v-icon> <!-- mdi: material design icon -->
+          </v-btn>
+          <v-btn color="error">
+            <v-icon>mdi-alarm</v-icon>
+          </v-btn>
+        </v-container>
+
+        <v-container fluid>
+          <v-alert type="success">
+            I'm a success alert.
+          </v-alert>
+
+          <v-alert type="info">
+            I'm an info alert.
+          </v-alert>
+        </v-container>
+      </v-main>
+
+      <v-footer app>
+        <p> this is a footer</p>
+      </v-footer>
+    </v-app>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify()
+    })
+  </script>
+</body>
+
+</html>

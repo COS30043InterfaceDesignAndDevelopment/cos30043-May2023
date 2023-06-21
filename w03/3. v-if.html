@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>V IF</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <!-- VUE -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"> </script>
+  
+</head>
+
+<body>
+	<h1>v-if</h1>
+	<div id="app">
+		<p><input v-model="str" > </p>
+
+		<!-- Show if str is vue-->
+    <!-- str.toLowerCase() == 'vue' -->
+		<p v-if="isActive">Hello Vue! It is Cool.</p>
+    <!-- elseif -->
+    <p v-else-if="str.toLowerCase() == 'vuejs'">
+      Hello Vue.js! So are you!
+    </p>
+		<!-- else -->
+		<p v-else>Hello, {{ str }}. I want to learn Vue!</p>
+
+    <div v-show="str.toLowerCase() == 'vue'">
+      WOW, VUE!
+    </div>
+	</div>
+ 
+	<script type="text/javascript">
+    let str = ''
+		//creating new Vue instance
+		Vue.createApp({
+      data() {
+        return {
+          str,
+          isActive: str.toLowerCase() == 'vue'}; //passing variables into vue app
+      }}).mount('#app');
+</script>
+</body>
+
+</html>

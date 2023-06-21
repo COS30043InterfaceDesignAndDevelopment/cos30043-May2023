@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Custom Directives</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+  
+</head>
+
+<body>
+	<h1>Custom Directives</h1>
+	<div id="app">
+		<input type="text" v-model="str" v-highlight="setting" />  
+		<!-- <input type="text" v-model="str" v-on:focus="changeSetting" />   -->
+  
+	</div>
+	
+	<script>
+	// In order to show the js and html on the same page, used embedded. You can link to external javascript file
+	Vue.directive('highlight',{
+		update(el, binding, vnode) {
+			el.style.backgroundColor = binding.value.color;
+			el.style.border = binding.value.border; 
+		}
+	});
+  
+	new Vue({   
+		el: '#app',
+		data: {
+      str:'',
+      setting: {color: 'lightgreen', border:'red 3px dashed' }
+    },
+    // methods: {
+    //   changeSetting: function(event) {
+    //     // console.log(this.setting);
+    //     event.target.style.backgroundColor=this.setting.color;
+    //     event.target.style.border=this.setting.border;
+    //   }
+    // }
+	}); 
+
+	</script>
+</body>
+
+</html>

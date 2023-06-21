@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Demo</title>
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet" /> -->
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+  
+  <!-- Bootstrap CSS -->
+  <!--CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <!-- <link href="css/style.css" rel="stylesheet" /> -->
+
+</head>
+<body>
+  <div id="app">
+
+    <div class="row">
+      <div class="col-md-9 offset-md-2">
+        <div class="row">
+
+          <div class="col-md-12">
+            <h1 align="center">Vue JS demo</h1>
+            <hr>
+          </div>
+          <!-- Printing Array using For -->
+          <div class="col-md-4">
+            <h2 >Use of Array</h2>
+            <ul>
+              <li v-for="s in students" >
+                {{s}}
+              </li>
+            </ul>
+          </div>
+
+          <!-- Printing sum of ywo values-->
+          <div class="col-md-4">
+            <h2>Basic expression</h2>
+            <p>Sum {{a+b}}</p>
+          </div>
+
+          <!-- Printing if the boolean value is true or false-->
+          <div class="col-md-4">
+            <h2>Boolean</h2>
+            <p>status: {{flag}}
+              <span v-if="flag">
+                This is removed when the flag is false.
+              </span>
+            </p>
+          </div>
+
+          <!-- Check if the given string is matching-->
+          <div class="col-md-4">
+            <h2>Boolean</h2>
+            <p>{{b}} &gt; {{a}}: {{ b > a }} </p>
+            <p>{{b}} &lt; {{a}}: {{ b < a }} </p>
+            <p>string check: '{{string}}'== 'apple': {{string=='apple'}}</p>
+            <p>string check: '{{string}}'== 'mango': {{string=='mango'}}</p>
+            <p>string check: '{{string}}' != 'banana': {{string!='banana'}}</p>
+          </p>
+        </div>
+
+        <!-- Printing an array-->
+        <div class="col-md-4">
+          <h2>Object</h2>
+          <p>Name:  {{person.name}}</p>
+          <p>Age:  {{person.age}}</p>
+        </p>
+      </div>
+
+        <!-- Printing an object array-->
+      <div class="col-md-4">
+        <h2>Array</h2>
+        <p>{{ people[0] }} {{ people[1] }}</p>
+      </p>
+    </div>
+
+    <!-- Data Binding array of object -->
+    <div class="col-md-4">
+      <h2>Array Object</h2>
+      <p>Name: {{ personObj[0].name }}, Age: {{ personObj[0].age }}</p>
+      <p>Name: {{ personObj[1].name }}, Age: {{ personObj[1].age }}</p>
+    </p>
+  </div>
+
+<!-- Textbox Input Update -->
+  <div class="col-md-4">
+      <h2>Form Input Binding</h2>
+      <p>Enter a string:</p>
+      <p><input type="text" v-model = "inputStr1"></p>
+      <p>Immediate effect : {{ inputStr1 }}</p>
+      <p><input type="text" v-model.lazy = "inputStr2"></p>
+      <p>Only when out of focus : {{inputStr2}}</p>
+  </div>
+
+
+  <!-- Check Input Update -->
+<div class="col-md-4">
+    <p><label for="checked">Click me: </label>
+    <input type="checkbox" id="checked" v-model="checked" /></p>
+
+    <div>
+      <transition name="slide-fade">
+      <div v-show="checked">
+        <span>Show:</span>
+        I show up when your checkbox is checked.
+      </div>
+    </div>
+  </transition>
+    <div>
+      <transition name="slide-fade">
+      <div v-show="!checked">
+        <span>Hide:</span>
+        I hide when your checkbox is checked.
+      </div>
+    </div>
+  </transition>
+</div>
+
+<!-- IF-Else Statements -->
+<div class="col-md-4">
+  <h1>If-Else Statements</h1>
+
+    <p>Enter a string:</p>
+    <p>
+      <select name="" v-model='myVar'>
+          <option value="">-- None --</option>
+          <option value="dogs">Dogs</option>
+          <option value="tuts">Tuts</option>
+          <option value="cars">Cars</option>
+      </select>
+    </p>
+      <div v-if="myVar == 'dogs'">
+        <h3>Dogs</h3>
+        <p>Welcome to a world of dogs.</p>
+      </div>
+      <div v-else-if="myVar == 'tuts'">
+        <h3>Tutorials</h3>
+        <p>Learn from examples.</p>
+      </div>
+      <div v-else-if="myVar == 'cars'">
+        <h3>Cars</h3>
+        <p>Read about cars.</p>
+      </div>
+      <div v-else>
+        <p>Select topic from the dropdown, to change the content of this DIV.</p>
+      </div>
+
+</div>
+
+
+<!-- filters -->
+<div class="col-md-4">
+  <h2> Filters </h2>
+    <p>Enter a string:</p>
+    <p><input type="text" v-model="inputStr"></p>
+    <p>Format as Upper Case: {{inputStr | uppercase }}</p>
+    <p>Format as Lower Case: {{inputStr | lowercase }}</p>
+</div>
+
+<!-- Lists -->
+<div class="col-md-4">
+  <h2>Lists</h2>
+  <table>
+    <tr>
+      <th>List 1</th>
+      <th>List 2 </th>
+    </tr>
+    <tr>
+      <td>
+        <ul v-for="p in people" >
+          <li>{{p}}</li>
+        </ul>
+    </td>
+    <td>
+      <ul v-for="p in personObj" >
+        <li>{{p.name}}</li>
+      </ul>
+    </td>
+    </tr>
+  </table>
+</div>
+
+<!-- Radio button  -->
+<div class="col-md-4">
+  <h2>Radio Button </h2>
+			<p>Select gender:
+				<input type="radio" name="var1" id="varm" v-model="rdoGender" value="m" />
+				<label for="varm">Male</label>
+				<input type="radio" name="var1" id="varf" v-model="rdoGender" value="f" />
+				<label for="varf">Female</label>
+				<input type="text" v-model="rdoGender3" />
+			</p>
+			<p>Result: {{rdoGender}} {{rdoGender3}}</p>
+	</div>
+
+<!-- Click Events -->
+  <div class="col-md-4">
+		  <h2>Click Events</h2>
+			<input type="button" value="Click for your lucky number" @click="num = '7'"> {{num}}
+			<input type="button" value="Click for your random number" @click="num2= num2+num"> {{num2}}
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Bootstrap JS-->
+<!-- <script src="js/bootstrap.min.js"></script> -->
+<!-- Load Viue-->
+<!-- <script src="js/vue.min.js"></script> -->
+
+<script src="js/demo.js"></script>
+<style>
+
+</style>
+
+</body>
+</html>

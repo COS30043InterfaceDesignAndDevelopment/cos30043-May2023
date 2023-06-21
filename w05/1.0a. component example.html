@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Component Example</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <!-- VUE -->
+	<script src="https://unpkg.com/vue@3"></script>   
+</head>
+
+<body>
+	<div id="app">
+		<example_component></example_component>
+	</div>
+  
+	<script>
+    const { createApp } = Vue
+	  const app = createApp({})
+    app.component('example_component',
+    {
+      data: function() {
+        return  {msg: 'Component: COS30043'} 
+      },
+      template: '<h1>Component Example</h1> <p>{{ msg }} </p>'
+    });	
+	
+	app.mount('#app')
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- JQUERY CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title>jQuery-getJSON</title>
+</head>
+<body onload="getjson();">
+<h1>jQuery - getJSON</h1>  
+
+<script>
+function getjson() {
+  $.getJSON("data/test.json", function( data ) {
+    var items = [];
+    // extract each data item and build an HTML list item from it
+    $.each( data, function( key, val ) {
+      items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
+    });
+    // turn the items array into a propery HTML <ul>
+    $( "<ul/>", {
+      "class": "my-new-list",
+      html: items.join( "" )
+    }).appendTo( "body" );
+  });
+}
+</script>
+</body>
+</html>

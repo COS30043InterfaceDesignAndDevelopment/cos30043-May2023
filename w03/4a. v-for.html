@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Hello v-for!</title>
+  <!-- VUE -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"> </script>
+</head>
+<div id="app">
+  <h2>v-for</h2>
+
+  <!-- v-for -->
+  <!-- duplicate keys still work with v-for -->
+  <div>
+    <ul>
+      <li v-for="s in students" >
+        {{s}}
+      </li>
+    </ul>
+  </div>
+
+  <h3>Objects</h3>
+  <div>
+    <ul>
+      <li v-for = "s in studentObjs" >
+        {{s.name}}: {{s.age}}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        students : ["Amy", "Cassie"],
+        studentObjs: [
+          {name: "Amy", age: "26"}, 
+          {name: "Cassie", age: "21"},
+          {name: "Alex", age: "18"}
+          ]
+      };
+    }
+  }).mount('#app')
+</script>
+
+</html>

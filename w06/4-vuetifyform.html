@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3"></script>   
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+	<div id="app">
+	<v-app>
+    <v-main>
+    <v-container>
+      <v-form ref="myForm" method="post"  action="http://mercury.swin.edu.au/it000000/formtest.php">
+        
+        <v-text-field name="firstName" v-model="firstName"  :rules="nameRules" label="First Name"    >   </v-text-field>
+        
+        <v-text-field name="email" v-model="email" type="email"     :rules="emailRules" label="Email"   >   </v-text-field>
+        
+        <v-btn  type="submit" color="success">Submit</v-btn>  
+      
+      </v-form>
+    </v-container>
+    </v-main>
+  </v-app>
+	</div>
+
+	<script src="js/vuetify form.js"></script> 
+</body> 
+</html>

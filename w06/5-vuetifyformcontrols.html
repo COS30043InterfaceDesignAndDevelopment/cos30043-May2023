@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+	<script src="https://unpkg.com/vue@3"></script>   
+  <!-- production version, optimized for size and speed -->
+
+  <!-- VUETIFY -->
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.js"></script>
+
+  <title>Vuetify form controls</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+        <v-container>
+        <!-- TODO: add a left margin to the form -->
+        <v-form ref="myForm" method="post" v-model="valid" 
+          action="http://mercury.swin.edu.au/it000000/formtest.php" autocomplete="off">
+          <v-text-field name="firstName" v-model="firstName" :rules="nameRules" label="First Name" required>
+          </v-text-field>
+          <v-text-field name="email" v-model="email" type="email" :rules="emailRules" label="Email" required>
+          </v-text-field>
+
+          <v-radio-group name="sex" v-model="sex">
+            <!-- radio button -->
+            <v-radio label="Male" value="M" color="red"></v-radio>
+            <v-radio label="Female" value="F" color="green"></v-radio>
+            <v-radio label="Other" value="O" color="blue"></v-radio>
+          </v-radio-group>
+
+          <v-checkbox v-model="program" label="P01 Mathematics" value="P01"></v-checkbox>
+          <v-checkbox v-model="program" label="P02 Swimming" value="P02"></v-checkbox>
+          <v-checkbox v-model="program" label="P03 Dancing" value="P03"></v-checkbox>
+
+          <v-select name="state" v-model="selectedState" :items="states" label="State"></v-select> <!-- select -->
+
+          <v-select name="state2" v-model="selectedState2" :items="states2" label="Another State"     
+            item-title="state"
+            item-value="abbr">
+          </v-select>
+
+          <v-textarea name="comments" label="Comments"></v-textarea>
+
+          <v-btn type="submit" :disabled="!valid" color="success" @click="validate">Submit</v-btn>
+
+        </v-form>
+        </v-container>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="js/vuetifyformcontrols.js"></script>
+</body>
+
+</html>

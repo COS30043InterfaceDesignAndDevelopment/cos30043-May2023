@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Custom Directives</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+</head>
+
+<body>
+	<h1>Custom Directives</h1>
+	<div id="app">
+		<p v-highlight="{color:'lightgreen'}" > Colour changed to light green</p>   
+		<p v-highlight="{color:'pink'}" > Colour changed to pink</p> 
+	</div>
+	
+	<script src="js/vue.js"></script>
+	<script>
+	// In order to show the js and html on the same page, used embedded. You can link to external javascript file
+	Vue.directive('highlight',{
+		bind(el, binding, vnode) {
+			el.style.backgroundColor = binding.value.color;//'lightgreen';
+		}
+	});
+	new Vue({   
+		el: '#app'
+	}); 
+
+	</script>
+</body>
+
+</html>

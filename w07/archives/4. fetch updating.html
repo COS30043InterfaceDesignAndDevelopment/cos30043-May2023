@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Fetch API: Updating</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- VUETIFY -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">  
+</head>
+
+<body>
+  <div id="app">
+    <app-readjson></app-readjson>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <!-- embedded this short js here. So you can see the js and html on the same page -->
+  <script>
+    Vue.component('app-readjson', {
+      data: function () {
+        return {id: '', title: '', body: '', msg: '', error: ''}
+      },
+      template: `			
+      <v-app>
+        <v-container fluid>
+          <v-form>
+            <v-text-field label="Id" v-model="id"></v-text-field>
+            <v-text-field label="Title" v-model="title"></v-text-field>
+            <v-text-field label="Message" v-model="body"></v-text-field>
+            <v-btn v-on:click="updateData()" color="success">
+              Update
+            </v-btn>
+          </v-form>
+          <p>Message: {{msg}}</p>
+          <p>Error (if any): {{error}}</p>
+        </v-container>
+      </v-app>
+		`,
+      methods: {
+        updateData: function () {
+          this.error = "";
+          //your data to send
+          // Question: how do we change this code to send update data from the user form?
+          const myObject = {
+            "userId": 1   // pre-defined (not availlable on form)
+            // ,"id": 1,
+            // ,"title": 'COS30043',
+            ,"title": this.title
+            // "body": 'a great unit'
+            , "body": this.body
+          };
+
+          fetch('https://jsonplaceholder.typicode.com/posts/' + this.id, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(myObject)
+          })
+          .then(response => {
+            if (!response.ok) {
+              this.error = response.status;
+            } else {
+              return response.json()
+            }
+          })
+          .then(data => {
+            // this is the data we get after response.json
+            console.log(data);
+            this.msg = data;
+          })
+          .catch(error => {
+            console.log('The error is: ', error);
+            this.error = error;
+          })
+        }
+      }
+    })
+    new Vue({ 
+      el: '#app',
+      vuetify: new Vuetify()
+    })
+  </script>
+</body>
+
+</html>

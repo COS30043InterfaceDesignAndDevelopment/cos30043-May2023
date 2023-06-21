@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<title>Fetch Requesting</title> 
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+</head> 
+<body> 
+	<div id="app">
+      <app-readjson></app-readjson>   
+	</div>
+      
+  <script src="https://unpkg.com/vue@3"></script>   
+	<script>  <!--   embedded this short js here, for easy distribution -->
+	const app = Vue.createApp({	})
+	app.component('app-readjson', {
+		data: function(){
+			return  {err:'', objs:''} 
+		},  
+		template: `	
+    <p v-show="err">Error: {{err}}</p>
+    <div>
+        <ul>
+          <li v-for="m in objs">
+            <b>id</b>: {{m.id}}, <br/>
+                <b>userId</b>: {{m.userId}}, <br/>
+                <b>title</b>: {{m.title}}, <br/>
+                <b>body</b>: {{m.body}}
+          </li>
+        </ul>
+      </div>`,
+		mounted() { //Called after the instance has been mounted
+			var self = this;
+			var url = 'https://jsonplaceholder.typicode.com/posts';
+			// var url = 'https://www.7timer.info/bin/astro.php?lon=113.2&lat=23.1&ac=0&unit=metric&output=json&tzshift=0';//whether forecasting
+
+			fetch(url)     //javascript fetch api  
+			.then( response =>{
+			    // turning the response into the usable data
+          // add-on: checking on HTTP errors (fetchAPI does not automatically halt on this error)
+          if (!response.ok) {
+            this.err = "Error (" + response.url + "): " + response.status;
+          } else {
+            return response.json()
+          }
+			})
+			.then( data =>{
+			  //This is the data you wanted to get from url
+			  self.objs = data;
+			})
+			.catch(error => {
+			  self.err=error
+			});
+		 
+  		}
+})
+app.mount('#app')
+	</script>
+</body> 
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Component Example</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <!-- VUE -->
+  <script src="https://unpkg.com/vue@3"></script>   
+</head>
+
+<body>
+	<h1>Component Example</h1>
+	<div id="app">
+		<fruit-list :fruits="['apple', 'peach', 'banana']"></fruit-list>
+
+    <h2>Another list somewhere...</h2>
+    <fruit-list :fruits="['banana', 'orange']"></fruit-list>
+	</div>
+
+	<script>
+	const app = Vue.createApp({	})
+	
+	app.component('fruit-list',
+	{
+    props: ['fruits'],
+		template: '<ol><li v-for="f in fruits">{{ f }}</li> </ol>'
+	});	
+	
+  app.mount('#app')
+
+	</script>
+</body>
+
+</html>

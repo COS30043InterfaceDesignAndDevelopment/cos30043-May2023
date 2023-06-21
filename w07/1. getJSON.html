@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<title>getJSON</title> 
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+</head> 
+<body> 
+	<div id="app">
+      <app-readjson></app-readjson>   
+	</div>
+      
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	
+  <script src="https://unpkg.com/vue@3"></script>   
+	
+	<script>  <!--   embedded this short js here for easy distribution  -->
+	const app = Vue.createApp({	})
+	app.component('app-readjson', {   
+		data: function() {
+			return  {
+        url: 'https://jsonplaceholder.typicode.com/posts',
+        err: '',
+        objs: []
+      } 
+		},  
+		template: `	
+      <p v-show="err">Error: {{err}}</p>
+      <div>
+        <ul>
+          <li v-for="m in objs">
+                <b>id</b>: {{m.id}}, <br/>
+                <b>userId</b>: {{m.userId}}, <br/>
+                <b>title</b>: {{m.title}}, <br/>
+                <b>body</b>: {{m.body}}
+          </li>
+        </ul>
+      </div>
+		`,
+		mounted() { 
+			var self = this;
+			$.getJSON(self.url, function(data) {
+				  self.objs = data;
+        })
+			.fail(function(xhr, textStatus, errorThrown) { 
+        // alert('getJSON request failed! '); 
+        self.err = 'Request failed: URL('+self.url+') => ' + xhr.status
+      })
+  		}
+	})
+	
+	app.mount('#app')
+	</script>
+</body> 
+</html>

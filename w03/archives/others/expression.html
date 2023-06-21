@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Expression</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+
+</head>
+<body>
+	<h1>Expression</h1>
+	<div id="app">
+		<p><label for = "x">x= </label>
+			<input type="number"  id="x" v-model="x" />
+		</p>
+		<p><label for = "y">y= </label>
+			<input type="number" id="y"  v-model="y" />
+		</p>
+
+		<!-- Calculate the sum -->
+		<p>The sum is : {{Number(x)+Number(y)}}	</p>
+	</div>
+	
+	<!-- VueJS Library -->
+	<!-- <script src="js/vue.min.js"></script> -->
+	<script type="text/javascript">
+		//variable declaration
+		var x = 0;
+		var y = 0;
+		 //create new vue instance
+		new Vue({ el: '#app', data: { x, y } });
+	</script>
+</body>
+</html>

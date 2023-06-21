@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Month Week</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+  
+  <!-- Bootstrap CSS -->
+  <!--CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+	<h1>Month Week</h1>
+	<div id="app">
+		<!-- -------------------   select week or month ------------ -->
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+				<!--
+				<input type="radio" v-model="sele" value="week">Day of Week
+				<input type="radio" v-model="sele" value="month">Month
+				-->
+				<!-- <button v-on:click="setSele('week')" >Day of Week</button>
+				<button v-on:click="setSele('month')" >Month</button> -->
+        <!-- alt: using computed propert psele -->
+        <button @click="psele = 'week'" >Day of Week</button>
+				<button @click="psele = 'month'" >Month</button>
+				</div>
+			</div>
+		</div>
+		<!-- -------------------   show months ------------ -->
+    <!-- Notice isMonth is without '()', because it is defined as part of Vue.computed -->
+		<div v-if="isMonth" class="container">
+      <!-- move data to the model -->
+			<div class="row">
+				<div class="col-3 border" v-for="m in months">{{m}}</div>
+			</div>
+		</div>
+		<!-- -------------------   show day of week  ------------ -->
+    <!-- notice the () after isWeek(): because it is defined in Vue.methods, not Vue.computed -->
+		<div v-if="isWeek()" class="container">
+			<div class="row">
+				<div class="col-4 border" v-for="d in days">{{d}}</div>
+			</div>
+		</div>
+  </div>
+  
+	<script type="text/javascript" src="js/monthWeek.js"> </script>
+</body>
+
+</html>

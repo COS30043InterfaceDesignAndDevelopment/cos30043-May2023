@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Custom Directives</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+  
+</head>
+
+<body>
+	<h1>Custom Directives</h1>
+	<div id="app">
+		<input v-focus>
+	</div>
+	
+	<script>
+	// In order to show the js and html on the same page, used embedded. You can link to external javascript file
+	new Vue({   
+		el: '#app',
+    directives: {
+      focus: {
+        // local directive definition
+        inserted: function(el) {
+          el.focus();
+        }
+      }
+	  }
+	}); 
+
+	</script>
+</body>
+
+</html>

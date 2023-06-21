@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+
+  <!-- VUETIFY -->
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+
+  <title>Vuetify form (2)</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+        <v-form ref="form" v-model="valid" lazy-validation>
+          <v-text-field v-model="name" :counter="10" :rules="nameRules" label="Name" required></v-text-field>
+
+          <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+
+          <v-select v-model="select" :items="items" :rules="[v => !!v || 'Item is required']" label="Item" required>
+          </v-select>
+
+          <v-checkbox v-model="checkbox" :rules="[v => !!v || 'You must agree to continue!']" label="Do you agree?"
+            required>
+          </v-checkbox>
+
+          <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
+            Validate
+          </v-btn>
+
+          <v-btn color="error" class="mr-4" @click="reset">
+            Reset Form
+          </v-btn>
+
+          <v-btn color="warning" @click="resetValidation">
+            Reset Validation
+          </v-btn>
+        </v-form>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="js/vuetifyform-2.js"></script>
+
+</body>
+
+</html>

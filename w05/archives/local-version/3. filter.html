@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Filter</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+</head>
+
+<body>
+	<h1>Filter</h1>
+	<div id="app">
+		<p><label for='numVar'>Enter a number 0-9: </label>
+		<input type='number' name='numVar'	 v-model="numVar" /></p>
+		
+		<p>Custom Format: {{numVar | num2words}}</p> 
+	</div>
+	<script src="js/vue.js"></script>
+	<script>
+	// In order to show the js and html on the same page, used embedded. You can link to external javascript file
+	new Vue({   
+		el: '#app',
+		data: {numVar:0},
+		filters: {   
+			num2words: function(myNum){
+				var ans = "";
+				switch (Number(myNum)) {
+					case 0 : ans="zero"; break;
+					case 1 : ans="one"; break;
+					case 2 : ans="two"; break;
+					default : ans="more than two or smaller than zero";
+				}
+				return ans; 
+			}
+		}
+	}); 
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Component Example</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <!-- VUE -->
+	<script src="https://unpkg.com/vue@3"></script>   
+</head>
+
+<body>
+	<h1>Component Example</h1>
+	<div id="app">
+		<example_component msg="Hello" name="Mr. Duc"></example_component>
+		<example_component msg="How are you" name="Mr. Son"></example_component>
+		<example_component msg="...Good bye" name="Mr. Hoang"></example_component>
+	</div>
+	<script>
+  const app = Vue.createApp({	})
+	
+	app.component('example_component',
+	{
+    props: ['msg', 'name'],
+		template: '<p>{{ msg }} {{ name }} </p>'
+	});	
+	
+  app.mount('#app')
+	</script>
+</body>
+
+</html>

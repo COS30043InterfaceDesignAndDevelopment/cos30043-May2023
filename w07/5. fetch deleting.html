@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<title>Fetching: delete</title> 
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <script src="https://unpkg.com/vue@3"></script>   
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.js"></script>
+</head> 
+<body> 
+	<div id="app">
+      	<app-readjson></app-readjson>   
+	</div>
+	<script>  <!--   embedded this short js here. So you can see the js and html on the same page -->
+	const app = Vue.createApp({	})
+  const vuetify = Vuetify.createVuetify()
+
+	app.component('app-readjson', {
+		data: function(){
+        return  {err:'', msg:'', id: ''} 
+    },  
+		template: `		
+    <v-app> 
+        <v-container>
+          <v-form>
+            <v-text-field label="Name" v-model="id">    </v-text-field>
+            <v-btn depressed v-on:click="deleteData(id)" color="primary"> 
+            Delete 
+            </v-btn>
+          </v-form>
+          <v-container>
+            <p>Message: {{msg}}</p>
+            <p v-show="err">Error (if any): {{err}}</p>
+          </v-container>
+        </v-container>
+			</v-app> 
+		`,
+	methods: {
+			deleteData: function(id){
+        this.err = ''
+        this.msg = ''
+				fetch('https://jsonplaceholder.typicode.com/posts/'+ id, {
+					method: 'DELETE',
+					headers: {
+					  'Content-Type': 'application/json'
+					},
+					body: null
+				})
+				.then(response => {
+					if (!response.ok) {
+            this.err = "URL(" + response.url + ") => " + response.status;
+          } else {
+            this.msg = response.status
+            return response.json()
+          }
+				})
+				.then(data => { 
+					  // this is the data we get after response.json()
+            // if data is not an empty object then set it into msg
+            if (Object.keys(data).length != 0) this.msg = data
+          }
+				)
+				.catch(error => this.err = 'The error is: ' + error)				
+      }
+}
+})
+app.use(vuetify).mount('#app')
+	</script>
+</body> 
+</html>

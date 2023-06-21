@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Fetch API: Requesting</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div id="app">
+    <app-readjson></app-readjson>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script>
+    // <!--   embedded this short js here. So you can see the js and html on the same page -->
+    Vue.component('app-readjson', {
+      data: function () {
+        return { err: '', msg: '' }
+      },
+      template: `<div>
+		<ul><li v-for="m in msg">{{m}}</li></ul>
+		<p v-show="err">Error: {{err}}</p>
+		</div>`,
+      mounted() { //Called after the instance has been mounted
+        var self = this;
+        var url = 
+          // "http://localhost/cos30043/lect7/posts.json"
+          'https://jsonplaceholder.typicode.com/posts';
+          // "data/persons.json"
+          // these cause an error message to be displayed: 
+          //  'https://jsonplaceholder.typicode.XXX/posts';
+          //  'https://jsonplaceholder.typicode.com:8080/posts';
+          // but this (wrong server path) ONLY causes an error if the response.ok handling code block in then(response...) is uncommented
+          //  'https://jsonplaceholder.typicode.com/postsXXX';
+
+          // - another URL:
+          // var url = 'https://www.7timer.info/bin/astro.php?lon=113.2&lat=23.1&ac=0&unit=metric&output=json&tzshift=0';//whether forecasting
+        // var url = 'data/persons.json';
+
+        fetch(url) // return a Promise that resolves to a Reponse object
+          .then(response => {
+            // turning the response into the usable data
+            // add-on: checking on HTTP errors (fetchAPI does not automatically halt on this error)
+            
+            if (!response.ok) {
+              self.err = response.status;
+            } else {
+              return response.json();
+            }
+
+            //return response.json();
+          })
+          .then(data => {
+            //This is the data you wanted to get from url
+            self.msg = data;
+          })
+          .catch(error => {
+            // does not handle response errors!!!
+            self.err = error
+          });
+
+      }
+    })
+    new Vue({ el: '#app' })
+  </script>
+</body>
+
+</html>

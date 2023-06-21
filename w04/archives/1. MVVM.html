@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>First Vue</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+  
+</head>
+
+<body>
+	<h1>First Vue</h1>
+	<div id="app">
+		<p>Please enter your name:<input type="text" v-model="yourName"  /> 
+		                         <!-- Directives are special attributes with the v- prefix. -->
+		</p>
+
+		<p>Hi, I am {{yourName  }}.</p>
+		
+		<button v-on:click="yourName='Vue'">Change your name to Vue.</button>
+	</div>
+ 
+	<script>	
+		var vm = new Vue({  //creating new Vue instance
+			el: '#app', //mount the instance to "#app" 
+			data:  {yourName: 'Amy'   }//When a Vue instance is created, it adds all the properties found in its data object to Vue’s reactivity system. When the values of those properties change, the view will “react”, updating to match the new values.
+		});
+	</script>
+</body>
+
+</html>

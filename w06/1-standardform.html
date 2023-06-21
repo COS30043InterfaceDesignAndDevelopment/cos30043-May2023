@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <!--CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    
+  <title>Standard HTML form validation</title>
+</head>
+
+<body>
+  <form method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
+    <div>
+      <label for="firstname">First name:</label>
+      <input type="text" name="firstname" required minlength="2" maxlength="10" />
+    </div>
+    <div>
+      <label for="age">Age:</label>
+      <input type="number" name="age" min="18" max="60" required />
+    </div>
+    <div>
+      <label for="age">Registration date:</label>
+      <input type="date" name="registDate" required />
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" name="email" 
+      pattern="/^[a-z0-9._%+-]+@[a-z0-9.- ]+\.[a-z]{2,4}$/" required />
+    </div>
+    <div>
+      <input type="submit" value="Submit" />
+    </div>
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Guess Number</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- VUE -->
+	<script src="https://unpkg.com/vue@3"></script>   <!-- link to vue js version 3  -->
+</head>
+
+<body>
+  <h1>Guess Number</h1>
+  <div id="app">
+    <p>Enter your guess from 1 to 100:<input type="number" v-model="guess" /></p>
+
+    <p>
+      <button @click="checkGuess()">Check Guess</button>
+      <button v-on:click="giveUp()">Give Up</button>
+      <button v-on:click="startOver()">Start Over</button>
+    </p>
+
+    <p>Message: {{ msg }}</p>
+    <hr>
+    <!-- Uncomment this after the game demo -->
+    <!-- <p>For your information, the secret number randomly generated is: {{ secret }}</p>
+    <p>If the difference between your guess and the secret number is smaller than 20, it will show "Very close",
+      otherwise, it will show "Not close".</p> -->
+
+  </div>
+  <script>
+    Vue.createApp({
+      data() { 
+        return {
+        guess: 0, msg: ''
+        , secret: 0 
+        }
+      },
+      methods: {
+        genRandomNum: function () { // generate random number from 1 to 100
+          // TODO: allow user to input the value range
+          return Math.floor(Math.random() * 100) + 1;
+        },
+
+        checkGuess: function () {
+          // FIXME: fix this for the case of the exact match!
+          let diff = this.guess - this.secret;
+
+          if (diff == 0) {
+            this.msg = "Well done!"
+          } else if (diff > -20 && diff < 0) {
+            this.msg = "Very close (higher).";
+          } else if (diff < 20 && diff >= 0) {
+            this.msg = "Very close (lower).";
+          } else {
+            this.msg = "Not close.";
+          }
+        },
+        startOver: function () {
+          this.msg = "Start guessing.";
+          this.secret = this.genRandomNum();
+        },
+        giveUp: function () {
+          this.msg = "The secret number is " + this.secret;
+        }
+
+      },
+      created: function () {//Called after the instance is created
+        this.msg = "Start guessing.";
+        this.secret = this.genRandomNum();
+      }
+    }).mount('#app');
+
+  </script>
+</body>
+
+</html>

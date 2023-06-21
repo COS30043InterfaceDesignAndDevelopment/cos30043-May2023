@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Layout</title>
+  <!-- Same as page.html but use float to reposition the wrapper elements  -->
+
+  <style type="text/css">
+    .border {
+      border: 1px solid wheat;
+    }
+
+    .page {
+      width: 100%;
+    }
+
+    .body {
+      height: 350px
+    }
+
+    header {
+      width: 99%;
+    }
+
+    nav {
+      width: 100%;  /* 25% */
+      height: 20%; /* 100% */
+      float: none;  /* left  */
+    }
+
+    section {
+      width: 32%;
+      float: left;  /* left  */
+      /* border: 1px solid wheat; */
+    }
+
+    article {
+      width: 50%;
+      height: 100%;
+      float: left;
+    }
+    aside {
+      width: 49%; /* 23% */
+      height: 100%;
+      float: left;
+    }
+
+    footer {
+      width: 99%;
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="border">
+      header
+    </header>
+    <div class="body">
+      <nav class="border">
+        nav <br />
+        A multi-line NAV
+      </nav>
+      <div class="border">
+        <section>
+          What is Lorem Ipsum?
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+        </section>
+        <section>
+          What is Lorem Ipsum?
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+        </section>
+        <section>
+          What is Lorem Ipsum?
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+        </section>
+    </div>
+    <footer class="border">
+      footer
+    </footer>
+  </div>
+  </div>
+</body>
+
+</html>

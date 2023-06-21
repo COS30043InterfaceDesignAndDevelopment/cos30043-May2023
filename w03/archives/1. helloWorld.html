@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Hello Vue!</title>
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+</head>
+<div id="myapp">
+  <h2>{{ message }}</h2>
+
+  <!-- static message: does not change with message -->
+  <b v-once>Static: {{ message }}</b> <br/>
+
+  <label for="message"> Change title:</label>
+  <input type="text" v-model="message" name="message" id="message">
+
+  <!-- DOM attribute binding with prop modifier -->
+  <div v-bind:text-content.prop="greeting">
+  </div>
+
+  <img v-bind:src="imgSrc">
+  <!-- <img src="images/flower.jpg" /> -->
+</div>
+
+<!-- Option 1: embedded js script -->
+<script>
+  var app = new Vue({
+    el: '#myapp',
+    data: {
+      message: 'Hello ...!',
+      greeting: "Hello, my name is ...!",
+      imgSrc: "images/flower.jpg"
+    }
+  })
+</script>
+
+<!-- Option 2: separate js file -->
+<!-- <script src="js/helloWorld.js"></script> -->
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Component Example</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+</head>
+
+<body>
+	<h1>Component Example</h1>
+	<div id="app">
+		<example_component></example_component>
+	</div>
+	<script src="js/vue.js"></script>
+	<script>
+
+	Vue.component('example_component',
+	{
+		data: function(){
+			return  {msg: 'Hello Mr. Chua'} 
+		},
+		template: '<p>{{ msg }} </p>'
+	});	
+	
+	new Vue({   
+		el: '#app'
+	});
+	</script>
+</body>
+
+</html>

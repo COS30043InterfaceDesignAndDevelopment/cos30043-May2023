@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello Vue!</title>
+  <!-- VUE -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"> </script>
+</head>
+<div id="app">
+  <h2>{{ message }}</h2>
+
+  <!-- static message: does not change with message -->
+  <b v-once>Static (rendered once, does not change): {{ message }}</b> <br/>
+
+  <label for="message"> Change title:</label>
+  <input type="text" v-model="message" name="message" id="message">
+
+  <!-- DOM attribute binding with prop modifier -->
+  <div v-bind:text-content.prop="greeting">
+    ...
+  </div>
+
+  <!-- how to use v-bind for the image's URL? -->
+  <a v-bind:href="imageUrl">
+    <img v-bind:src="imgSrc">
+  </a>
+  
+  <!-- <img src="images/flower.jpg" /> -->
+</div>
+
+<!-- Option 1: embedded js script -->
+<script>
+  var app = Vue.createApp({ //creating new Vue instance
+    data() {
+      return {
+        message: 'Hello ...!',
+        greeting: "Hello, my name is ...!",
+        imgSrc: "images/flower.jpg",
+        imageUrl: "http://swin.edu.au"
+      };
+    }
+  }).mount('#app');
+</script>
+
+<!-- Option 2: separate js file -->
+<!-- <script src="js/helloWorld.js"></script> -->
+
+</html>

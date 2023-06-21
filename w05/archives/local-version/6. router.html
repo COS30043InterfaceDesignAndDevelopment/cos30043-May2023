@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Router</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+</head>
+<body>
+	<h1>Router</h1> 
+	<div id="app">
+		<nav>
+		  <router-link to="/">Home</router-link>
+		  <router-link to="/login">Login</router-link>
+		  <router-link to="/about">About</router-link>
+		</nav>
+		<router-view></router-view>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script src="js/vue-router.js"></script>
+	
+	<script>
+	const Home  = {  template: '<div><h2>Home</h2><p>Home page content here.</p></div>' }
+	const Login = {  template: '<div><h2>Login</h2><p>Login page content here.</p></div>' 	}
+	const About = {  template: '<div><h2>About</h2><p>A page content here.</p></div>'  }
+
+	const router = new VueRouter({
+	  routes: [
+		{ path: '/', component: Home },
+		{ path: '/login', component: Login },
+		{ path: '/about', component: About }
+	  ]
+	})
+
+	new Vue({
+		el: "#app",
+		router
+	}) 
+	</script>
+</body>
+</html>

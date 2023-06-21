@@ -1,0 +1,238 @@
+<!doctype html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <!--CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <!--LOCAL-->
+  <!-- <link href="framework/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Bootstrap customisation -->
+  <style>
+    /* used for parent container to highlight the nested child containers */
+    .cust-padding .row {
+      padding: 5px;
+    }
+
+    .cust-padding-xl .row {
+      padding: 20px;
+    }
+
+    .cust-height-xl {
+      height: 100px;
+    }
+  </style>
+  <!-- auto-reload this page": only used for testing -->
+  <script type="text/javascript" src="https://livejs.com/live.js"></script>
+
+  <title>Bootstrap Demo App</title>
+</head>
+
+<body>
+  <h3>First container</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col border border-dark">row 1: col1</div>
+      <div class="col border border-dark">col2</div>
+    </div>
+    <div class="row border border-dark">row 2:</div>
+  </div>
+
+  <h3>Columns with container-fluid</h3>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 border border-dark">col1</div>
+      <div class="col-md-6 col-lg-9 border border-dark">col2</div>
+    </div>
+  </div>
+
+  <h3>Column size distributions</h3>
+  <div class="container">
+    <!-- different column sizes at different breakpoints -->
+    <div class="row">
+      <div class="col-md-6 col-lg-3 border border-dark">col1</div>
+      <div class="col-md-6 col-lg-3 border border-dark">col2</div>
+      <div class="col-md-6 col-lg-3 border border-dark">col3</div>
+      <div class="col-md-6 col-lg-3 border border-dark">col4</div>
+    </div>
+    <!-- column equal size distributions -->
+    <div class="row">
+      <div class="col-md col-lg border border-dark">col1</div>
+      <div class="col-md col-lg border border-dark">col2</div>
+      <div class="col-md col-lg border border-dark">col3</div>
+      <div class="col-md col-lg border border-dark">col4</div>
+    </div>
+    <!-- unbalanced column size distributions -->
+    <div class="row">
+      <div class="col-md col-lg-6 border border-dark">col1</div>
+      <div class="col-md col-lg border border-dark">col2</div>
+      <div class="col-md col-lg border border-dark">col3</div>
+      <div class="col-md col-lg border border-dark">col4</div>
+    </div>
+  </div>
+
+  <h3>Stacked to horizontal</h3>
+  <div class="container cust-padding">
+    <div class="row border border-dark">
+      <div class="col-12 border border-dark bg-light">
+        50-50 Split
+      </div>
+    </div>
+    <div class="row border border-dark">
+      <div class="col-md-6 border border-dark bg-light">
+        <p>Product A</p>
+        <p>Photo of Product A</p>
+      </div>
+      <div class="col-md-6 border border-dark bg-light">
+        <p>Product B</p>
+        <p>Photo of Product B</p>
+      </div>
+    </div>
+  </div>
+
+  <p></p>
+  <div class="container cust-padding">
+    <div class="row border border-dark">
+      50-50 @ medium or 25-75 @ large
+    </div>
+    <div class="row border border-dark">
+      <div class="col-md-6 col-lg-3 border border-dark bg-light">
+        <p>Author</p>
+        <p>Photo of Author</p>
+      </div>
+      <div class="col-md-6 col-lg-9 border border-dark bg-light">
+        <p>Paragraph 1 of article</p>
+        <p>Paragraph 2 of article</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Nesting columns</h3>
+  <div class="container cust-padding">
+    <div class="row border border-dark">
+      <div class="col-md-3 border border-dark bg-light">
+        <h1>First Column</h1>
+      </div>
+      <div class="col-md-9 border border-dark bg-light">
+        <div class="row border border-dark">
+          <h2>Second (nested) Column – contains 2 row,
+            with 2 columns each showing 4 boxes</h2>
+        </div>
+        <div class="row border border-dark">
+          <div class="col-md-6 border border-dark bg-light">
+            <p>Product A</p>
+          </div>
+          <div class="col-md-6 border border-dark bg-light">
+            <p>Photo of Product A</p>
+          </div>
+        </div>
+        <div class="row border border-dark">
+          <div class="col-md-6 border border-dark bg-light">
+            <p>Product B</p>
+          </div>
+          <div class="col-md-6 border border-dark bg-light">
+            <p>Photo of Product B</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Responsive column resets</h3>
+  <div class="container cust-padding">
+    <div class="row border border-dark">
+      <div class="col-sm-6 col-md-3 border border-dark bg-light">
+        <p>Item 1</p>
+      </div>
+      <div class="col-sm-6 col-md-3 border border-dark bg-light">
+        <p>Item 2</p>
+      </div>
+      <div class="col-sm-6 col-md-3 border border-dark bg-light">
+        <p>item 3</p>
+      </div>
+      <div class="col-sm-6 col-md-3 border border-dark bg-light">
+        <p>Item 4</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Column ordering</h3>
+  <div class="container cust-padding">
+    <div class="row border border-dark">
+      <!-- No Ordering -->
+      <div class="col-md-4 border border-dark bg-light">
+        <p>Left column</p>
+      </div>
+      <div class="col-md-8 border border-dark bg-light">
+        <p>Right column</p>
+      </div>
+    </div>
+    <div class="row border border-dark">
+      <!-- With Ordering -->
+      <div class="col-md-4 order-lg-last border border-dark bg-light">
+        <p>Left column displayed on the right</p>
+      </div>
+      <div class="col-md-4 order-lg-first border border-dark bg-light">
+        <p>Right column displayed on the left</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Context grouping</h3>
+  <div class="container border border-dark">
+    <h4>Horizontal grouping</h4>
+    <div class="row">
+      <div class="col-6 border border-dark">
+        <p>Product A</p>
+      </div>
+      <div class="col-6 border border-dark">
+        <p>More Product A</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 border border-dark">
+        <p>Product B</p>
+      </div>
+      <div class="col-6 border border-dark">
+        <p>More Product B</p>
+      </div>
+    </div>
+  </div>
+  <p></p>
+  <div class="container border border-dark">
+    <h4>Vertical grouping</h4>
+    <div class="row">
+      <div class="col-6 border border-dark">
+        <div class="row">
+          <div class="col-12 border border-dark">
+            <p>Product A</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 border border-dark">
+            <p>More Product A</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 border border-dark">
+        <div class="row">
+          <div class="col-12 border border-dark">
+            <!-- <div class="row"> -->
+            <p>Product B</p>
+            <!-- </div> -->
+          </div>
+          <!-- <div class="row"> -->
+          <div class="col-12 border border-dark">
+            <p>More Product B</p>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

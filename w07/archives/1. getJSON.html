@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>getJSON</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div id="app">
+    <app-readjson></app-readjson>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script>
+    // embedded this short js here. So you can see the js and html on the same page:
+    //  A Vuejs component that performs jquery and displays the result
+    Vue.component('app-readjson', {
+      data: function () {
+        return { msg: [] }
+      },
+      template: `	
+      <div>
+        <ul>
+          <li v-for="m in msg">
+                id: {{m.id}}, <br/>
+                userId: {{m.userId}}, <br/>
+                title: {{m.title}}, <br/>
+                body: {{m.body}}
+          </li>
+        </ul>
+      </div>
+		`,
+      mounted() {
+        // fix "this" to a variable for use later in embedded function
+        // JS: "this" is a pseudo variable, which may change from one function call to the next
+        var self = this;  
+        $.getJSON('https://jsonplaceholder.typicode.com/posts', // 
+        // alternative: 
+        // data => this.msg = data
+        function (data) {
+          self.msg = data;
+        }
+        )
+        .fail(function () { 
+          // include response errors!
+          alert('getJSON request failed! '); 
+        })
+      }
+    });
+
+    new Vue({ el: '#app' });
+  </script>
+</body>
+
+</html>

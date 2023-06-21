@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="... ...">
+  <meta name="keywords" content="... ...">
+  <meta name="author" content="... ...">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- VUE -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+  <!-- production version, optimized for size and speed -->
+  <!--script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+  
+  <!-- Bootstrap CSS -->
+  <!--CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    
+  <title>Simple Vue Form</title>
+</head>
+
+<body>
+  <h1>Simple Vue Form</h1>
+  <div id="app">
+    <form @submit="checkForm" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php" novalidate>
+      <div v-if="errors.length">
+        <p>Please correct the following error(s):</p>
+        <ul>
+          <li v-for="error in errors">{{ error }}</li>
+        </ul>
+      </div>
+      <p>
+        <label for="fName">First Name</label>
+        <input type="text" name="fName" id="fName" v-model="fName">
+      </p>
+      <p>
+        <input type="submit" value="submit">
+      </p>
+    </form>
+  </div>
+
+  <script src="js/simpleform.js"></script>
+
+</body>
+
+</html>
