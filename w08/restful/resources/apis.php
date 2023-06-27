@@ -6,6 +6,8 @@
 
 // Use this API for demonstration purposes only
 
+include_once("settings.php");
+
 // get the HTTP method, path and body of the request
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
@@ -14,8 +16,7 @@ $input = json_decode(file_get_contents('php://input'),true);
 
 // **************  change to your Mercury or localhost credentials !!  
 // $conn = mysqli_connect('feenix-mariadb.swin.edu.au', 's1234567', 'yourPassword', 's1234567_db');
-$database = 'test';
-$conn = mysqli_connect('localhost', 'admin', 'password', $database)
+$conn = mysqli_connect($server, $user, $pwd, $database)
   or die("<p>Unable to connect to the database server: $database.</p>"
   . "<p>Error code " . mysqli_connect_errno()
   . ": " . mysqli_connect_error() . "</p>");
@@ -23,7 +24,7 @@ $conn = mysqli_connect('localhost', 'admin', 'password', $database)
 mysqli_set_charset($conn,'utf8');
 
 // initialise the table name accordingly
-$table = "idd_person";
+// $table = "idd_person";
 
 // retrieve the search key field name and value from the path
 $fld = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));

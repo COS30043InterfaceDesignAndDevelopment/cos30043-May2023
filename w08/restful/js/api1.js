@@ -69,7 +69,7 @@ app.component('app-readextapi', {
   }
 })
 // *********************************** fetch   GET **************************
-// var readSQLApiURL = 'http://localhost/dev.idd/www/w08/restfulfullstack/resources/apis.php/'
+// var readSQLApiURL = 'http://localhost/dev.idd/www/w08/restful/resources/apis.php/'
 var readSQLApiURL = 'resources/apis.php'
 app.component('app-readmysql', {
   template: `

@@ -6,17 +6,17 @@ This app uses a PHP/MySQL backend, which can ONLY be run using a proper web serv
 
 Basic steps: 
 1. Follow the instructions in "Environment setup" to run the web server hosting this app
-2. On the browser: `http://localhost/dev.idd/www/w08/restfulfullstack/`
+2. On the browser: `http://localhost/dev.idd/www/w08/restful/`
 
 # Environment setup 
 1. An Xampp server has been started with Apache and MySQL services.
-2. Set up to host the `restfulfullstack` directory in the default Apache web server at the following address:
-   http://localhost/dev.idd/www/w08/restfulfullstack/:
-   - copy the entire `w08/restfulfullstack/` directory to the `htdocs/dev.idd/www/w08` directory of the XAMPP server
+2. Set up to host the `restful` directory in the default Apache web server at the following address:
+   http://localhost/dev.idd/www/w08/restful/:
+   - copy the entire `w08/restful/` directory to the `htdocs/dev.idd/www/w08` directory of the XAMPP server
    - the URL could be different depending on your web server setup
 3. Set up the MySQL database with test data. Execute the `resources/idd_person.sql` script in MySQL, e.g.
 ```
-MariaDB [test]> source /path-to-folder-w08/restfulfullstack/resources/idd_person.sql
+MariaDB [test]> source /path-to-folder-w08/restful/resources/idd_person.sql
 ```
 
 # Testing the Backend using PostMan
@@ -28,14 +28,14 @@ The following sections describe how to use PostMan to test the application API.
 
 # GET
 - All persons
-http://localhost/dev.idd/www/w08/restfulfullstack/resources/apis.php
+http://localhost/dev.idd/www/w08/restful/resources/apis.php
 
 - Person by name
-http://localhost/dev.idd/www/w08/restfulfullstack/resources/apis.php/name/Billy
+http://localhost/dev.idd/www/w08/restful/resources/apis.php/name/Billy
 
 # POST
 
-http://localhost/dev.idd/www/w08/restfulfullstack/resources/apis.php
+http://localhost/dev.idd/www/w08/restful/resources/apis.php
 - Method: POST
 - Body/raw/JSON:
 
@@ -49,7 +49,7 @@ http://localhost/dev.idd/www/w08/restfulfullstack/resources/apis.php
 
 # PUT
 
-http://localhost/dev.idd/www/w08/restfulfullstack/resources/apis.php/name/DucLe
+http://localhost/dev.idd/www/w08/restful/resources/apis.php/name/DucLe
 
 - Body/raw/JSON:
 
@@ -62,4 +62,4 @@ http://localhost/dev.idd/www/w08/restfulfullstack/resources/apis.php/name/DucLe
 
 # DELETE
 
-http://localhost/dev.idd/www/w08/restfulfullstack/resources/apis.php/name/DucLe
+http://localhost/dev.idd/www/w08/restful/resources/apis.php/name/DucLe

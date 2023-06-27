@@ -30,9 +30,15 @@
     "id": 5
   },
   {
-    "manufacturer": "vinfast",
+    "manufacturer": "toyota",
+    "model": "petrol, loud",
+    "year": 2020,
+    "id": 6
+  },
+  {
+    "manufacturer": "honda",
     "model": "sedan",
     "year": 2023,
-    "id": 6
+    "id": 7
   }
 ]
