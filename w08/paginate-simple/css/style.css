@@ -32,7 +32,10 @@
   text-decoration: none;
    
 } 
-.currentPage a { 	 
+.current-page a { 	 
   background-color:lightblue ;  
 }
- 
+
+.active { 	 
+  background-color: yellow ;  
+}

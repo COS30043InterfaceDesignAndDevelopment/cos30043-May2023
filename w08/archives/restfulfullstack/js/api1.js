@@ -136,13 +136,11 @@ Vue.component('app-readmysql', {
   }
 })
 // ***********************************  fetch  POST  **************************
-
 var postSQLApiURL = 'resources/apis.php/'
 Vue.component('app-postdata', {
   template: `
   <v-row>
   	<v-col cols="12" md="9">
-
   		<v-card class="mx-auto" max-width="90%">
       <v-card-title>
         <h2>Posting with RESTful API: Inserting into MySQL Table</h2>
@@ -164,7 +162,6 @@ Vue.component('app-postdata', {
   			</v-card-text>
 
   		</v-card>
-
   	</v-col>
   	<!-- Output -->
   	<v-col cols="12" md="3">
@@ -176,8 +173,6 @@ Vue.component('app-postdata', {
   		</v-card>
   	</v-col>
   </v-row>
-
-
    `,
   data: function () {
     return {
@@ -247,7 +242,7 @@ Vue.component('app-putdata', {
       </v-col>
       <!-- Output -->
       <v-col cols="12" md="3">
-        <v-card>
+        <v-card class="mx-auto" max-width="90%">
           <v-card-text>
             <p>Message : {{msg}}</p>
             <p>Error: {{err}}</p>

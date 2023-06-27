@@ -1,11 +1,8 @@
 //************************    getJSON ************************
 var readJsonURL = 'data/persons.json' //define url for json file
 
-const app = Vue.createApp({
-  data() {
-    msg: ''
-  },
-})
+const app = Vue.createApp({ })
+
 app.component('app-readjson', {
   // define the template for the component
   template: `
@@ -72,7 +69,8 @@ app.component('app-readextapi', {
   }
 })
 // *********************************** fetch   GET **************************
-var readSQLApiURL = 'resources/apis.php/'
+// var readSQLApiURL = 'http://localhost/dev.idd/www/w08/restfulfullstack/resources/apis.php/'
+var readSQLApiURL = 'resources/apis.php'
 app.component('app-readmysql', {
   template: `
   <v-row>
@@ -84,8 +82,8 @@ app.component('app-readmysql', {
        <v-card-text>
        <ul class="list-group">
          <li class="list-group-item" v-for="person in persons" >
-           <img v-bind:src='person.fpath' class="img-rounded" alt="smiley" height="30px" />
-           {{person.name}} {{person.age}}
+           <img v-bind:src='person.fpath' class="img-rounded" alt="smiley" height="30" />
+           {{person.name}} {{person.age}} (image: {{person.fpath}})
          </li>
        </ul>
        </v-card-text>
@@ -156,9 +154,7 @@ app.component('app-postdata', {
   			<v-card-text>
   				<v-form>
   					<v-text-field label="Name" v-model="name1" />
-  					</v-text-field>
   					<v-text-field label="Age" v-model="age1" />
-  					</v-text-field>
   					<v-radio-group label="Smiley Color" v-model="imgVar">
   						<v-radio label="White" value="1"></v-radio>
   						<v-radio label="Yellow" value="2"></v-radio>
@@ -241,9 +237,7 @@ app.component('app-putdata', {
             <!-- Input -->
             <v-form name="myForm2" class="form-horizontal">
               <v-text-field label="Name" v-model="name2" />
-              </v-text-field>
               <v-text-field label="Age" v-model="age2" />
-              </v-text-field>
               <v-btn depressed v-on:click="putData(name2,age2)" color="primary">
                 Update
               </v-btn>
@@ -253,7 +247,7 @@ app.component('app-putdata', {
       </v-col>
       <!-- Output -->
       <v-col cols="12" md="3">
-        <v-card>
+        <v-card class="mx-auto" max-width="90%">
           <v-card-text>
             <p>Message : {{msg}}</p>
             <p>Error: {{err}}</p>
@@ -318,7 +312,6 @@ app.component('app-deldata', {
 				<v-card-text>
 					<v-form>
 						<v-text-field label="Name" v-model="name3" />
-						</v-text-field>
 						<v-btn depressed v-on:click="delData(name3)" color="primary">Delete</v-btn>
 					</v-form>
 				</v-card-text>

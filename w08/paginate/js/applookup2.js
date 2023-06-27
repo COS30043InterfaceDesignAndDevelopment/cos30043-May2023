@@ -45,25 +45,18 @@ app.component('app-lookup2', // indicating the component tag
   							<v-row>
   								<v-col cols="12" md="4">
   									<p>
-  										<label for="strCode">Code:</label><br>
-  										<v-text-field id="strCode" v-model="fUnit.code" />
-  										</v-text-field>
+  										<v-text-field id="strCode" v-model="fUnit.code" label="Code:"/>
   									</p>
   								</v-col>
 
   								<v-col cols="12" md="4">
   									<p>
-  										<label for="strDesc">Description:</label><br>
-  										<v-text-field id="strDesc" v-model="fUnit.desc" />
-  										</v-text-field>
+  										<v-text-field id="strDesc" v-model="fUnit.desc" label="Description:"/>
   									</p>
   								</v-col>
 
   								<v-col cols="12" md="4">
-
-  									<label>Unit Type:</label><br />
-
-  									<v-radio-group v-model="fUnit.type">
+  									<v-radio-group v-model="fUnit.type" label="Unit Type:">
   										<v-radio label="Core" value="Core"></v-radio>
   										<v-radio label="Software Development" value="Software Development"></v-radio>
   										<v-radio label="Systems Analysis" value="Systems Analysis"></v-radio>
@@ -78,11 +71,8 @@ app.component('app-lookup2', // indicating the component tag
   		</v-row>
 
   		<v-row>
-
   			<v-col cols="12" md="12 ">
-
   				<v-card class="mx-auto" max-width="90%">
-
   					<v-row>
   						<v-col md="12 " cols="12">
   							<v-card-text>
@@ -107,13 +97,11 @@ app.component('app-lookup2', // indicating the component tag
   										</tbody>
   									</template>
   								</v-table>
-
+                </v-card-text>
   						</v-col>
   					</v-row>
-
   					<v-row>
   						<v-col cols="12" md="4">
-
   							<!-- Vue Paginate template -->
   							<paginate 
                   :page-count="getPageCount" 
@@ -125,11 +113,8 @@ app.component('app-lookup2', // indicating the component tag
                   :container-class="'pagination'" 
                   :page-class="'page-item'">
   							</paginate>
-
   						</v-col>
   					</v-row>
-
-  					</v-card-text>
   				</v-card>
   			</v-col>
   		</v-row>
