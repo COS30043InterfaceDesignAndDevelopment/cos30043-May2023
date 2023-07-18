@@ -22,7 +22,7 @@ The **back-end PHP script** is an adaptation of the one from week 9: `src/assets
       "no-unused-vars": "off"
     }
 ```
-4. Run the front-end
+4. Steps to run the front-end
 
 In the `persons-app` folder of your front-end project:
 

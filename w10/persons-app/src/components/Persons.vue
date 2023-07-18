@@ -11,7 +11,7 @@
       <div class="row" v-bind:key="person.id" v-for="person in persons">
         <div class="col-md border border-dark">{{person.name}}</div>
         <div class="col-md border border-dark">{{person.age}}</div>
-        <div class="col-md border border-dark"><img v-bind:src='person.fpath' class="img-rounded" alt="smiley" height="30px" /></div>
+        <div class="col-md border border-dark"><img v-bind:src='person.fpath' class="img-rounded" alt="smiley" height="30"/></div>
       </div>
     </div>
     <p>Message : {{ msg }}</p>

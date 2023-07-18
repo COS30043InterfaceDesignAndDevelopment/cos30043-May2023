@@ -8,7 +8,7 @@ Vue CLI
 
 # Single file components
 
-https://vuejs.org/v2/guide/single-file-components.html
+https://vuejs.org/guide/scaling-up/sfc.html
 
 # Node.js
 - Home: https://nodejs.org/en/

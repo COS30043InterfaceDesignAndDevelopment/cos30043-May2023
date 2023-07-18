@@ -1,8 +1,6 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-
-    <h2 class="text-removed"> &gt; &gt; &gt; CONTENT below this line is the default from project template and CAN BE REMOVED! &lt;&lt;&lt; </h2>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -56,9 +54,5 @@ li {
 }
 a {
   color: #42b983;
-}
-
-.text-removed {
-  color: red;
 }
 </style>
