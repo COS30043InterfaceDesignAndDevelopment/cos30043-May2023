@@ -1,5 +1,13 @@
-Vue CLI
---------
+Single File Component
+---------------------
+
+# Vue CLI
+- `popper.js`: a JavaScript library to build poppers and tooltips and manage them. Helps position tooltips and popovers.
+  - URL: https://www.tutorialspoint.com/position-tooltips-and-popovers-using-popper-js
+
+## Project configuration
+- `publicPath`: https://cli.vuejs.org/config/#publicpath
+  if the app is deployed at a subpath on server then specify that subpath using this property.
 
 # VSCode setup
 - Install VSCode extenssion that helps provide syntax highlighting for `.vue` files
