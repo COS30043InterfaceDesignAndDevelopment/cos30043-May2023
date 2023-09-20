@@ -13,7 +13,7 @@
 		<input v-model="progName"  ></p>
 		
 		<p>Please enter your name:
-		<input v-model="yourName"  /> 
+		<input v-model="yourName" > 
 		</p>
 		<!-- Directives are special attributes with the v- prefix. -->
 		
@@ -30,7 +30,9 @@
  		//creating new Vue instance
 		Vue.createApp({  //create a new application instance
 			data() {      //data 
-				return {progName:"",  yourName:""}
+				return {
+          progName:"",  
+          yourName:""}
 				}
 		}).mount('#app');
 	</script>

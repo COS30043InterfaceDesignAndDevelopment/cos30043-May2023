@@ -24,7 +24,7 @@
   <div>
     <ul>
       <li v-for = "s in studentObjs" >
-        {{s.name}}: {{s.age}}
+        {{s.name}}: {{s.age}}: {{ s.city }}
       </li>
     </ul>
   </div>
@@ -36,9 +36,9 @@
       return {
         students : ["Amy", "Cassie"],
         studentObjs: [
-          {name: "Amy", age: "26"}, 
-          {name: "Cassie", age: "21"},
-          {name: "Alex", age: "18"}
+          {name: "Amy", age: "26", city: "hanoi"}, 
+          {name: "Cassie", age: "21", city: "hcm"},
+          {name: "Alex", age: "18", city: "danang"}
           ]
       };
     }

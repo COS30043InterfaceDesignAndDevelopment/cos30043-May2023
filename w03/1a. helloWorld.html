@@ -19,10 +19,11 @@
   <input type="text" v-model="message" name="message" id="message">
 
   <!-- DOM attribute binding with prop modifier -->
-  <div v-bind:text-content.prop="greeting">
+  <!-- <div v-bind:text-content.prop="greeting">
     ...
-  </div>
+  </div> -->
 
+  <div>URL: {{ imageUrl }} </div>
   <!-- how to use v-bind for the image's URL? -->
   <a v-bind:href="imageUrl">
     <img v-bind:src="imgSrc">
@@ -37,7 +38,7 @@
     data() {
       return {
         message: 'Hello ...!',
-        greeting: "Hello, my name is ...!",
+        greeting: "Hello, my name is COS30043!",
         imgSrc: "images/flower.jpg",
         imageUrl: "http://swin.edu.au"
       };

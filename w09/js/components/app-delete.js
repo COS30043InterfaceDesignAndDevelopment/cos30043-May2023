@@ -7,7 +7,7 @@ const DelData = {
 			<v-card class="mx-auto" max-width="90%">
 				<v-card-text>
 					<v-form>
-						<v-text-field label="Name" v-model="name3" />
+						<v-text-field label="Name" v-model="name3">
 						</v-text-field>
 						<v-btn depressed v-on:click="delData(name3)" color="primary">Delete</v-btn>
 					</v-form>

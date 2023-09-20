@@ -11,8 +11,8 @@ const PostData = {
 
        <v-card-text>
    	<v-form>
-          <v-text-field label="Name" v-model="name1" /></v-text-field>
-   				<v-text-field label="Age" v-model="age1" /></v-text-field>
+          <v-text-field label="Name" v-model="name1"></v-text-field>
+   				<v-text-field label="Age" v-model="age1"></v-text-field>
 
 
         <v-radio-group label="Smiley Color" v-model="imgVar">

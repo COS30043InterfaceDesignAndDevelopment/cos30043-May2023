@@ -19,7 +19,7 @@
     <!-- str.toLowerCase() == 'vue' -->
 		<p v-if="isActive">Hello Vue! It is Cool.</p>
     <!-- elseif -->
-    <p v-else-if="str.toLowerCase() == 'vuejs'">
+    <p v-else-if="isActiveVuejs">
       Hello Vue.js! So are you!
     </p>
 		<!-- else -->
@@ -31,14 +31,25 @@
 	</div>
  
 	<script type="text/javascript">
-    let str = ''
 		//creating new Vue instance
 		Vue.createApp({
       data() {
         return {
-          str,
-          isActive: str.toLowerCase() == 'vue'}; //passing variables into vue app
-      }}).mount('#app');
+          str: '',
+          // this does not work in Vue3!!
+          // isActive: str.toLowerCase() == 'vue'}; //passing variables into vue app
+        }
+      }
+      ,
+      computed: {
+        isActive: function() { 
+          return this.str.toLowerCase() ==  'vue'
+        },
+        isActiveVuejs: function() { 
+          return this.str.toLowerCase() ==  'vuejs'
+        }
+      }
+    }).mount('#app');
 </script>
 </body>
 

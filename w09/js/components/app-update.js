@@ -9,9 +9,9 @@ const PutData = {
         <v-card-text>
           <!-- Input -->
           <v-form name="myForm2" class="form-horizontal">
-            <v-text-field label="Name" v-model="name2" />
+            <v-text-field label="Name" v-model="name2">
             </v-text-field>
-            <v-text-field label="Age" v-model="age2" />
+            <v-text-field label="Age" v-model="age2">
             </v-text-field>
             <v-btn depressed v-on:click="putData(name2,age2)" color="primary">
               Update
