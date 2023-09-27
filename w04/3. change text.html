@@ -10,20 +10,24 @@
 	<h1>ViewModel</h1>
 	<div id="app">
 		<p> {{strVar}} </p>
-		<button @click="changeText">Change Text</button>
+    <input type="text" name="name" v-model="name"><p></p>
+
+		<button @click="changeText('Xin chào!')">Change Text</button>
 	</div>
 	<script src="https://unpkg.com/vue@3"></script>   <!-- link to vue js version 3  -->
 	
 	<script>
 		Vue.createApp({  //create a new application instance
 			data() {     // data option
-				return {strVar:'Hello World!'
+				return {
+          strVar:'Hello World!',
+          name: "Duc Le"
 				}
 			},
 			
 			methods: {   // methods option
-				changeText:	function () {
-					this.strVar="Hello New World"
+				changeText:	function (mesg) {
+					this.strVar = this.name + ": " + mesg
 				}			
 			}
 		}).mount('#app')   // mount the app to dom element
