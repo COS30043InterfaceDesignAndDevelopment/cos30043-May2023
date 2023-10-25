@@ -17,7 +17,7 @@ app.get('/', (req, resp) => {
 });
 
 //configure the server port
-const port = 3001;
+const port = 5001;
 app.listen(port, () => {
     console.log('Server runs on port ' + port);
 })
